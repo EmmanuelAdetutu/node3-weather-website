@@ -3,8 +3,10 @@ const express = require('express')
 const hbs = require('hbs')
 const geocode = require('../src/model/geocode')
 const forecast = require('../src/model/forecast')
-const  app = express()
 
+
+const  app = express()
+const port = process.env.PORT || 3000
 //Define paths for Express config
 const PublicDir =path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../templates/views')
@@ -94,6 +96,6 @@ app.use(express.static(PublicDir))
             //res.send('My 404 page')
         })
 
-app.listen(3000,()=>{
-    console.log('Server is running in port 3000')
+app.listen(port,()=>{
+    console.log('Server is running in port' + port)
 })
