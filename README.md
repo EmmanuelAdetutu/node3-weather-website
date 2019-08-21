@@ -2,9 +2,9 @@
 node JS application implementing, geocoding, weather api, express server...
 
 
-Discussing:
+<b>Discussing:</b>
 
-wiring user interface with nodejs backend. <br>
+Wiring user interface with nodejs backend. <br>
 Accessing API from browser. <br>
 Dynamic Pages with templating.<br>
 Asychronous basic. <br>
