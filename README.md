@@ -4,8 +4,8 @@ node JS application implementing, geocoding, weather api, express server...
 
 Discussing:
 
-wiring user interface with nodejs backend.
-Accessing API from browser
-Dynamic Pages with templating
-Asychronous basic
-CallBack Function
+wiring user interface with nodejs backend./n
+Accessing API from browser. /n
+Dynamic Pages with templating. /n
+Asychronous basic. /n
+CallBack Function. /n
