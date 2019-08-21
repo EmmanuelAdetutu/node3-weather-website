@@ -2,7 +2,7 @@
 node JS application implementing, geocoding, weather api, express server...
 
 
-<b>Discussing:</b>
+<b>Highlighting:</b>
 
 Wiring user interface with nodejs backend. <br>
 Accessing API from browser. <br>
