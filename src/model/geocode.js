@@ -1,9 +1,9 @@
 const request = require('request')
 const geocode = (address,callback)=>{
-    url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(address) + '.json?access_token=pk.eyJ1IjoidHV0dWVtbWEyMDAxIiwiYSI6ImNqbXFrbmY5cTFsdHMzcG54OG5pNnR0dmYifQ.YamfASRJ1Xm3Wk2wGIL17g'
+    url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(address) + '.json?access_token='+process.env.MAPBOXTOKEN
     request({url, json:true},(error,{body})=>{
         if (error) {
-            callback('Unable to connect to weather service',undefined)
+            callback('Unable to connect to geocode service',undefined)
         }else if (body.features.lenght === 0){
             callback('Unable to find location',undefined)
         }else if (body.features[0]===undefined) {
@@ -17,4 +17,24 @@ const geocode = (address,callback)=>{
         }
     })
 }
-module.exports =geocode
+
+const reversegeocode =(lat,lon,callback)=>{
+    url = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${lat},${lon},250&mode=retrieveAddresses&maxresults=1&gen=9&app_id=${process.env.APP_ID}&app_code=${process.env.APP_CODE}`
+    request({url,json:true},(error,respo)=>{
+        if (error){
+            callback('Unable to connect to geocode service',undefined)
+        }else {
+            const address ={
+                city:respo.body.Response.View[0].Result[0].Location.Address.City,
+                country:respo.body.Response.View[0].Result[0].Location.Address.Country
+            }
+           // console.log(address)
+            callback(undefined,address)
+        }
+    })
+}
+
+module.exports = {
+    geocode,
+    reversegeocode
+}
